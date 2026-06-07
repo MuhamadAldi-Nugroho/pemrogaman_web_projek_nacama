@@ -1,66 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NACAMA - Name Card Maker</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <nav>
-        <div class="logo">
-            NACAMA
-            <span>NAME CARD MAKER</span>
-        </div>
-        <div class="nav-links">
-            <a href="#" class="nav-link">Template</a>
-            <a href="Login.html">
-                <button type="button" class="btn-text">Masuk</button>
-            </a>
-            <a href="Register.html">
-                <button type="button" class="btn-primary">Daftar Gratis</button>
-            </a>
-        </div>
+      <div class="logo">
+        NACAMA
+        <span>NAME CARD MAKER</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-link">Template</a>
+        <a href="Login.html">
+          <button type="button" class="btn-text">Masuk</button>
+        </a>
+        <button type="button" class="btn-primary" onclick="openRegister()">
+          Daftar Gratis
+        </button>
+      </div>
     </nav>
 
     <main>
-        <section class="hero">
-            <div class="badge">✦ KARTU NAMA PROFESIONAL</div>
-            <h1>Buat Kartu Nama <br>yang <span>Tak Terlupakan</span></h1>
-            <p class="hero-desc">Desain kartu nama elegan dalam hitungan menit. Pilih template, isi data, unduh — selesai.</p>
-            
-            <div class="hero-cta">
-                <button type="button" class="btn-primary icon-btn">🎨 Jelajahi Template</button>
-                <button type="button" class="btn-secondary">Mulai Gratis →</button>
-            </div>
-        </section>
+      <section class="hero">
+        <div class="badge">✦ KARTU NAMA PROFESIONAL</div>
+        <h1>Buat Kartu Nama <br />yang <span>Tak Terlupakan</span></h1>
+        <p class="hero-desc">
+          Desain kartu nama elegan dalam hitungan menit. Pilih template, isi
+          data, unduh — selesai.
+        </p>
 
-        <section class="features">
-            <h2>Kenapa Harus Memilih Kami?</h2>
-            <ul class="features-grid">
-                <li>
-                    <h3>Desain Cepat & Mudah</h3>
-                    <p>Antarmuka yang sederhana memungkinkan siapa saja membuat kartu nama profesional tanpa perlu pengalaman desain.</p>
-                </li>
-                <li>
-                    <h3>Kustomisasi Tanpa Batas</h3>
-                    <p>Ubah warna, teks, dan tata letak sesuai dengan identitas personal atau merek bisnismu.</p>
-                </li>
-                <li>
-                    <h3>Siap Cetak & Unduh</h3>
-                    <p>Dapatkan hasil akhir dalam format resolusi tinggi yang siap untuk dicetak atau dibagikan secara digital.</p>
-                </li>
-            </ul>
-        </section>
+        <div class="hero-cta">
+          <button type="button" class="btn-primary icon-btn">
+            🎨 Jelajahi Template
+          </button>
+          <button type="button" class="btn-secondary">Mulai Gratis →</button>
+        </div>
+      </section>
+
+      <section class="features">
+        <h2>Kenapa Harus Memilih Kami?</h2>
+        <ul class="features-grid">
+          <li>
+            <h3>Desain Cepat & Mudah</h3>
+            <p>
+              Antarmuka yang sederhana memungkinkan siapa saja membuat kartu
+              nama profesional tanpa perlu pengalaman desain.
+            </p>
+          </li>
+          <li>
+            <h3>Kustomisasi Tanpa Batas</h3>
+            <p>
+              Ubah warna, teks, dan tata letak sesuai dengan identitas personal
+              atau merek bisnismu.
+            </p>
+          </li>
+          <li>
+            <h3>Siap Cetak & Unduh</h3>
+            <p>
+              Dapatkan hasil akhir dalam format resolusi tinggi yang siap untuk
+              dicetak atau dibagikan secara digital.
+            </p>
+          </li>
+        </ul>
+      </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 NACAMA. All rights reserved.</p>
-    </footer>
+    <!-- REGISTER MODAL -->
+    <div class="modal-overlay" id="registerModal">
+      <div class="modal-box">
+        <span class="close" onclick="closeRegister()">×</span>
 
-</body>
+        <h2>Buat Akun ✨</h2>
+
+        <!-- NAMA -->
+        <label>Nama Lengkap</label>
+        <input type="text" placeholder="Nama Lengkap" />
+
+        <!-- EMAIL -->
+        <label>Email</label>
+        <input type="email" placeholder="nama@gmail.com" />
+
+        <!-- PASSWORD -->
+        <label>Password</label>
+        <input type="password" placeholder="Minimal 6 Karakter" />
+
+        <div class="btn-row">
+          <button class="btn-login">Daftar</button>
+        </div>
+
+        <p class="switch">
+          Sudah punya akun?
+          <a href="#">Masuk</a>
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 NACAMA. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
+
+<script>
+  function openRegister() {
+    document.getElementById("registerModal").style.display = "flex";
+  }
+
+  function closeRegister() {
+    document.getElementById("registerModal").style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    const modal = document.getElementById("registerModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
