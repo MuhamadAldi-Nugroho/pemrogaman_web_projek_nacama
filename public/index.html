@@ -4,27 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NACAMA - Name Card Maker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav>
-        <div class="logo">NACAMA</div>
-        <div>
-            <button type="button">Log In</button>
-            <button type="button">Sign Up</button>
+        <div class="logo">
+            NACAMA
+            <span>NAME CARD MAKER</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link">Template</a>
+            <button type="button" class="btn-text">Masuk</button>
+            <button type="button" class="btn-primary">Daftar Gratis</button>
         </div>
     </nav>
 
     <main>
-        <section>
-            <h1>Name Card Maker</h1>
-            <p>Desain kartu nama profesional yang merepresentasikan identitasmu. Sesuaikan gaya, tambahkan detail, dan hasilkan kartu nama dalam hitungan detik.</p>
-            <button type="button">Mulai Desain</button>
+        <section class="hero">
+            <div class="badge">✦ KARTU NAMA PROFESIONAL</div>
+            <h1>Buat Kartu Nama <br>yang <span>Tak Terlupakan</span></h1>
+            <p class="hero-desc">Desain kartu nama elegan dalam hitungan menit. Pilih template, isi data, unduh — selesai.</p>
+            
+            <div class="hero-cta">
+                <button type="button" class="btn-primary icon-btn">🎨 Jelajahi Template</button>
+                <button type="button" class="btn-secondary">Mulai Gratis →</button>
+            </div>
         </section>
 
-        <section>
+        <section class="features">
             <h2>Kenapa Harus Memilih Kami?</h2>
-            <ul>
+            <ul class="features-grid">
                 <li>
                     <h3>Desain Cepat & Mudah</h3>
                     <p>Antarmuka yang sederhana memungkinkan siapa saja membuat kartu nama profesional tanpa perlu pengalaman desain.</p>
