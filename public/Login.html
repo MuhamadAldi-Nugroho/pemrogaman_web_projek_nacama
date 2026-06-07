@@ -1,66 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Masuk - NACAMA | Pembuat Kartu Nama Profesional</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="Login.css">
-</head>
-<body>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="Login.css" />
+  </head>
+  <body>
     <div class="main-container">
-        <div class="grid-overlay"></div>
+      <div class="grid-overlay"></div>
 
-        <header>
-            <div class="logo">
-                <span class="main-logo">NACAMA</span>
-                <span class="sub-logo">NAME CARD MAKER</span>
+      <header>
+        <div class="logo">
+          <span class="main-logo">NACAMA</span>
+          <span class="sub-logo">NAME CARD MAKER</span>
+        </div>
+        <nav>
+          <a href="#" class="nav-link">Template</a>
+          <a href="#" class="nav-link">Masuk</a>
+          <a href="#" class="btn-register">Daftar Gratis</a>
+        </nav>
+      </header>
+
+      <main class="login-wrapper">
+        <div class="login-header">
+          <h1>Masuk ke Akun Anda</h1>
+          <p>
+            Silakan masukkan email dan kata sandi Anda untuk melanjutkan. Belum
+            punya akun? <a href="#">Daftar di sini.</a>
+          </p>
+        </div>
+
+        <div class="login-card">
+          <form action="#">
+            <div class="input-group">
+              <label for="email">Email Anda</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Email Anda"
+                required
+              />
             </div>
-            <nav>
-                <a href="#" class="nav-link">Template</a>
-                <a href="#" class="nav-link">Masuk</a>
-                <a href="#" class="btn-register">Daftar Gratis</a>
-            </nav>
-        </header>
 
-        <main class="login-wrapper">
-            <div class="login-header">
-                <h1>Masuk ke Akun Anda</h1>
-                <p>Silakan masukkan email dan kata sandi Anda untuk melanjutkan. Belum punya akun? <a href="#">Daftar di sini.</a></p>
+            <div class="input-group">
+              <label for="password">Kata Sandi</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Kata Sandi"
+                required
+              />
             </div>
 
-            <div class="login-card">
-                <form action="#">
-                    <div class="input-group">
-                        <label for="email">Email Anda</label>
-                        <input type="email" id="email" placeholder="Email Anda" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="password">Kata Sandi</label>
-                        <input type="password" id="password" placeholder="Kata Sandi" required>
-                    </div>
-
-                    <div class="form-options">
-                        <a href="#" class="forgot-password">Lupa Kata Sandi?</a>
-                    </div>
-
-                    <button type="submit" class="btn-login">Masuk</button>
-                </form>
+            <div class="form-options">
+              <a href="#" class="forgot-password">Lupa Kata Sandi?</a>
             </div>
-        </main>
 
-        <footer>
-            <p>&copy; 2026 NACAMA. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#">Kebijakan Privasi</a>
+            <button type="submit" class="btn-login">Masuk</button>
+            <div class="auth-footer">
+              Belum punya akun? <a href="Register.html">Daftar di sini.</a>
             </div>
-        </footer>
+          </form>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2026 NACAMA. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Kebijakan Privasi</a>
+        </div>
+      </footer>
     </div>
-
-</body>
+  </body>
 </html>
