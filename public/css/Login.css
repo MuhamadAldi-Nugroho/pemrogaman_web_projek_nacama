@@ -41,7 +41,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 8%;
+  padding: 20px;
 }
 
 .logo {
@@ -59,23 +59,27 @@ header {
 }
 
 .sub-logo {
-  font-size: 9px;
-  letter-spacing: 2px;
-  color: #888;
-  margin-top: 5px;
+  display: block;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 4px;
+  color: #8c8c88;
+  margin-top: 2px;
 }
 
 nav {
+  margin-top: 1px;
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
 }
 
 .nav-link {
-  color: #b5b5b5;
+  color: #8c8c88;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 0.9rem;
   transition: color 0.3s;
+  letter-spacing: 0.5px;
 }
 
 .nav-link:hover {
@@ -83,13 +87,14 @@ nav {
 }
 
 .btn-register {
+  font-family: "Plus Jakarta Sans", sans-serif;
   background-color: #d4af37;
   color: #0a0a0a;
   text-decoration: none;
-  padding: 10px 22px;
+  font-size: 0.85rem;
+  padding: 10px 16px;
   border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   transition:
     background-color 0.3s,
     transform 0.2s;
