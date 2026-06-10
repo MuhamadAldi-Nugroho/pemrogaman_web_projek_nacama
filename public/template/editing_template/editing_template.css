@@ -1,5 +1,5 @@
 /* ── IMPORTS ── */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap");
 
 /* ── GLOBAL BASE STYLES ── */
 * {
@@ -13,7 +13,9 @@ body {
   min-height: 100vh;
   padding-top: 100px;
   padding-bottom: 50px;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 /* ── SHOW/HIDE CARD PER TEMA ── */
@@ -97,9 +99,6 @@ body {
   background-color: #111111;
   border-top: 4px solid #d4af37;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 .theme-bold .p-company {
   font-size: 7px;
@@ -134,11 +133,6 @@ body {
 .theme-minimal {
   background-color: #f7f4ef;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 .theme-minimal .p-name {
   font-size: 15px;
@@ -720,7 +714,9 @@ nav {
   top: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 nav .logo {
@@ -810,7 +806,9 @@ nav .logo span {
   flex: 0 0 350px;
   padding: 30px;
   border-radius: 12px;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .panel-subtitle {
