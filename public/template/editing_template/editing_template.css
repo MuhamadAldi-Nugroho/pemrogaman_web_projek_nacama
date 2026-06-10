@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0b0b0a;
+  color: #e4e4e0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  background-color: rgba(11, 11, 10, 0.8);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+nav .logo {
+  font-family: "Cinzel", serif;
+  color: #cca464;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 1;
+}
+
+nav .logo span {
+  display: block;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 9px;
+  color: #8c8882;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  color: #8c8882;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #e4e4e0;
+}
+
+.editor-container {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+  gap: 40px;
+  height: calc(100vh - 100px);
+}
+
+.preview-workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #111110;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 40px;
+}
+
+.card-display-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.live-card-preview {
+  width: 450px;
+  height: 260px;
+  background-color: #1a2238;
+  border-radius: 12px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.live-card-preview .p-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  border-left: 2px solid #cca464;
+  padding-left: 10px;
+  margin-bottom: 4px;
+}
+
+.live-card-preview .p-title {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #aaaaaa;
+  margin-bottom: 35px;
+  padding-left: 12px;
+}
+
+.live-card-preview .p-info {
+  font-size: 9px;
+  color: #888888;
+  margin-bottom: 4px;
+  padding-left: 12px;
+}
+
+.live-card-preview .side-text {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  font-size: 10px;
+  color: #415a77;
+  letter-spacing: 1px;
+}
+
+.workspace-actions {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background-color: #cca464;
+  color: #0b0b0a;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #e5be7e;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #e4e4e0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.control-panel {
+  width: 400px;
+  background-color: #161615;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.control-panel h2 {
+  font-size: 20px;
+  color: #f1e6d2;
+  margin-bottom: 6px;
+}
+
+.panel-subtitle {
+  font-size: 13px;
+  color: #666665;
+  margin-bottom: 25px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 5px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 12px;
+  color: #8c8882;
+  font-weight: 600;
+}
+
+.input-group input {
+  background-color: #111110;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px;
+  color: #ffffff;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #cca464;
+}

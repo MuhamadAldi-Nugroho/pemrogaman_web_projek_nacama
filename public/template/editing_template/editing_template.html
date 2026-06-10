@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nacama - Edit Template</title>
+  <link rel="stylesheet" href="editing.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      NACAMA
+      <span>NAME CARD MAKER</span>
+    </div>
+    <div class="nav-links">
+      <a href="../template.html" class="nav-link">Template</a>
+      <a href="#" class="nav-link">Riwayat</a>
+    </div>
+  </nav>
+
+  <main class="editor-container">
+    
+    <section class="preview-workspace">
+      <div class="card-display-box">
+        <div class="live-card-preview">
+          <div class="p-name" id="preview-name">Nama Lengkap</div>
+          <div class="p-title" id="preview-title">JABATAN / POSISI</div>
+          <div class="p-info" id="preview-phone">+62 812-xxxx-xxxx</div>
+          <div class="p-info" id="preview-email">nama@email.com</div>
+          <div class="p-info" id="preview-web">www.website.com</div>
+          <div class="p-company side-text" id="preview-company">NAMA PERUSAHAAN</div>
+        </div>
+      </div>
+      <div class="workspace-actions">
+        <a href="../template.html"><button type="button" class="btn-secondary">Kembali</button></a>
+        <button type="button" class="btn-primary">Simpan Proyek</button>
+      </div>
+    </section>
+
+    <section class="control-panel">
+      <h2>Sunting Informasi</h2>
+      <p class="panel-subtitle">Ubah teks di bawah untuk memperbarui kartu namamu secara langsung.</p>
+      
+      <div class="form-container">
+        <div class="input-group">
+          <label for="input-name">Nama Lengkap</label>
+          <input type="text" id="input-name" value="Nama Lengkap">
+        </div>
+
+        <div class="input-group">
+          <label for="input-title">Jabatan / Posisi</label>
+          <input type="text" id="input-title" value="JABATAN / POSISI">
+        </div>
+
+        <div class="input-group">
+          <label for="input-company">Nama Perusahaan</label>
+          <input type="text" id="input-company" value="NAMA PERUSAHAAN">
+        </div>
+
+        <div class="input-group">
+          <label for="input-phone">Nomor Telepon</label>
+          <input type="text" id="input-phone" value="+62 812-xxxx-xxxx">
+        </div>
+
+        <div class="input-group">
+          <label for="input-email">Email</label>
+          <input type="email" id="input-email" value="nama@email.com">
+        </div>
+
+        <div class="input-group">
+          <label for="input-web">Website</label>
+          <input type="text" id="input-web" value="www.website.com">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
