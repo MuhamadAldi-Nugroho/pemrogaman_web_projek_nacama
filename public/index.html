@@ -39,11 +39,11 @@
         </p>
 
         <div class="hero-cta">
-        <a href="template/template.html">
-          <button type="button" class="btn-primary icon-btn">
-            🎨 Jelajahi Template
-          </button>
-        </a>
+          <a href="template/template.html">
+            <button type="button" class="btn-primary icon-btn">
+              🎨 Jelajahi Template
+            </button>
+          </a>
           <button type="button" class="btn-secondary">Mulai Gratis →</button>
         </div>
       </section>
@@ -85,23 +85,27 @@
 
         <!-- NAMA -->
         <label>Nama Lengkap</label>
-        <input type="text" placeholder="Nama Lengkap" />
+        <input type="text" id="reg-name" placeholder="Nama Lengkap" />
 
         <!-- EMAIL -->
         <label>Email</label>
-        <input type="email" placeholder="nama@gmail.com" />
+        <input type="email" id="reg-email" placeholder="nama@gmail.com" />
 
         <!-- PASSWORD -->
         <label>Password</label>
-        <input type="password" placeholder="Minimal 6 Karakter" />
+        <input
+          type="password"
+          id="reg-password"
+          placeholder="Minimal 6 Karakter"
+        />
 
         <div class="btn-row">
-          <button class="btn-login">Daftar</button>
+          <button class="btn-login" onclick="registerUser()">Daftar</button>
         </div>
 
         <p class="switch">
           Sudah punya akun?
-          <a href="#">Masuk</a>
+          <a href="Login.html">Masuk</a>
         </p>
       </div>
     </div>
@@ -109,22 +113,82 @@
     <footer>
       <p>&copy; 2026 NACAMA. All rights reserved.</p>
     </footer>
+
+    <script>
+      // =========================
+      // REGISTER
+      // =========================
+      function openRegister() {
+        document.getElementById("registerModal").style.display = "flex";
+      }
+
+      function closeRegister() {
+        document.getElementById("registerModal").style.display = "none";
+      }
+
+      window.onclick = function (event) {
+        const modal = document.getElementById("registerModal");
+
+        if (event.target === modal) {
+          closeRegister();
+        }
+      };
+
+      // =========================
+      // REGISTER USER
+      // =========================
+      async function registerUser() {
+        const name = document.getElementById("reg-name").value.trim();
+        const email = document.getElementById("reg-email").value.trim();
+        const password = document.getElementById("reg-password").value.trim();
+
+        if (!name || !email || !password) {
+          alert("Semua field wajib diisi!");
+          return;
+        }
+
+        try {
+          const response = await fetch("/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              password,
+            }),
+          });
+
+          const data = await response.json();
+
+          alert(data.message);
+
+          if (data.status === "success") {
+            // kosongkan form
+            document.getElementById("reg-name").value = "";
+            document.getElementById("reg-email").value = "";
+            document.getElementById("reg-password").value = "";
+
+            // tutup REGIS
+            closeRegister();
+          }
+        } catch (error) {
+          console.error(error);
+          alert("Gagal terhubung ke server");
+        }
+      }
+
+      // =========================
+      // BUKA REGIS DARI LOGIN
+      // =========================
+      window.addEventListener("load", () => {
+        const params = new URLSearchParams(window.location.search);
+
+        if (params.get("register") === "open") {
+          openRegister();
+        }
+      });
+    </script>
   </body>
 </html>
-
-<script>
-  function openRegister() {
-    document.getElementById("registerModal").style.display = "flex";
-  }
-
-  function closeRegister() {
-    document.getElementById("registerModal").style.display = "none";
-  }
-
-  window.onclick = function (event) {
-    const modal = document.getElementById("registerModal");
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  };
-</script>

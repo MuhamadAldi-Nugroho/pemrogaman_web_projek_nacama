@@ -37,12 +37,18 @@
           <h1>Masuk ke Akun Anda</h1>
           <p>
             Silakan masukkan email dan kata sandi Anda untuk melanjutkan. Belum
-            punya akun? <a href="#">Daftar di sini.</a>
+            punya akun?
+            <a href="index.html?register=open">Daftar di sini.</a>
           </p>
         </div>
 
         <div class="login-card">
-          <form action="#">
+          <form
+            onsubmit="
+              event.preventDefault();
+              loginUser();
+            "
+          >
             <div class="input-group">
               <label for="email">Email Anda</label>
               <input
@@ -68,8 +74,9 @@
             </div>
 
             <button type="submit" class="btn-login">Masuk</button>
-            <div class="auth-footer">
-              Belum punya akun? <a href="Register.html">Daftar di sini.</a>
+            Belum punya akun?<a href="index.html?register=open"
+              >Daftar di sini</a
+            >
             </div>
           </form>
         </div>
@@ -82,5 +89,45 @@
         </div>
       </footer>
     </div>
+
+    <script>
+      function loginUser() {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!email || !password) {
+          alert("Email dan Password wajib diisi!");
+          return;
+        }
+
+        fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            alert(data.message);
+
+            // kalau login sukses
+            if (data.status === "success") {
+              localStorage.setItem("user", JSON.stringify(data.user));
+
+              window.location.href = "profile.html";
+            }
+          })
+          .catch((err) => {
+            alert("Server error");
+            console.log(err);
+          });
+      }
+    </script>
+
+
   </body>
 </html>
