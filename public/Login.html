@@ -112,15 +112,27 @@
         })
           .then((res) => res.json())
           .then((data) => {
-            alert(data.message);
 
-            // kalau login sukses
-            if (data.status === "success") {
-              sessionStorage.setItem("user", JSON.stringify(data.user));
+    console.log("DATA LOGIN:", data);
 
-              window.location.href = "index.html";
-            }
-          })
+    alert(data.message);
+
+    if (data.status === "success") {
+
+        localStorage.setItem(
+            "user",
+            JSON.stringify(data.user)
+        );
+
+        console.log(
+            "USER TERSIMPAN:",
+            localStorage.getItem("user")
+        );
+
+        window.location.href = "index.html";
+    }
+
+})
           .catch((err) => {
             alert("Server error");
             console.log(err);
