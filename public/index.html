@@ -6,10 +6,7 @@
     <title>NACAMA - Name Card Maker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -20,12 +17,28 @@
       </div>
       <div class="nav-links">
         <a href="template/template.html" class="nav-link">Template</a>
-        <a href="Login.html">
+        <a href="Login.html" id="nav-masuk">
           <button type="button" class="btn-text">Masuk</button>
         </a>
-        <button type="button" class="btn-primary" onclick="openRegister()">
-          Daftar Gratis
-        </button>
+        <button type="button" class="btn-primary" id="nav-daftar" onclick="openRegister()">Daftar Gratis</button>
+        <!-- Tampil saat SUDAH login -->
+        <div class="user-wrapper" id="nav-user" style="display: none">
+          <button class="user-btn" id="user-btn" onclick="toggleDropdown()" aria-haspopup="true" aria-expanded="false">
+            <div class="avatar-circle" id="nav-avatar"></div>
+            <span id="nav-username"></span>
+            <span class="chevron-icon" id="chevron-icon">▾</span>
+          </button>
+
+          <div class="user-dropdown" id="user-dropdown" role="menu">
+            <div class="dropdown-header">
+              <div class="dropdown-name" id="dropdown-name"></div>
+              <div class="dropdown-email" id="dropdown-email"></div>
+            </div>
+            <a href="profile.html" class="dropdown-item" role="menuitem"> 👤 Profil Saya </a>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item dropdown-danger" role="menuitem" onclick="logoutUser()">Keluar</button>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -33,16 +46,11 @@
       <section class="hero">
         <div class="badge">✦ KARTU NAMA PROFESIONAL</div>
         <h1>Buat Kartu Nama <br />yang <span>Tak Terlupakan</span></h1>
-        <p class="hero-desc">
-          Desain kartu nama elegan dalam hitungan menit. Pilih template, isi
-          data, unduh — selesai.
-        </p>
+        <p class="hero-desc">Desain kartu nama elegan dalam hitungan menit. Pilih template, isi data, unduh — selesai.</p>
 
         <div class="hero-cta">
           <a href="template/template.html">
-            <button type="button" class="btn-primary icon-btn">
-              🎨 Jelajahi Template
-            </button>
+            <button type="button" class="btn-primary icon-btn">🎨 Jelajahi Template</button>
           </a>
           <button type="button" class="btn-secondary">Mulai Gratis →</button>
         </div>
@@ -53,24 +61,15 @@
         <ul class="features-grid">
           <li>
             <h3>Desain Cepat & Mudah</h3>
-            <p>
-              Antarmuka yang sederhana memungkinkan siapa saja membuat kartu
-              nama profesional tanpa perlu pengalaman desain.
-            </p>
+            <p>Antarmuka yang sederhana memungkinkan siapa saja membuat kartu nama profesional tanpa perlu pengalaman desain.</p>
           </li>
           <li>
             <h3>Kustomisasi Tanpa Batas</h3>
-            <p>
-              Ubah warna, teks, dan tata letak sesuai dengan identitas personal
-              atau merek bisnismu.
-            </p>
+            <p>Ubah warna, teks, dan tata letak sesuai dengan identitas personal atau merek bisnismu.</p>
           </li>
           <li>
             <h3>Siap Cetak & Unduh</h3>
-            <p>
-              Dapatkan hasil akhir dalam format resolusi tinggi yang siap untuk
-              dicetak atau dibagikan secara digital.
-            </p>
+            <p>Dapatkan hasil akhir dalam format resolusi tinggi yang siap untuk dicetak atau dibagikan secara digital.</p>
           </li>
         </ul>
       </section>
@@ -93,11 +92,7 @@
 
         <!-- PASSWORD -->
         <label>Password</label>
-        <input
-          type="password"
-          id="reg-password"
-          placeholder="Minimal 6 Karakter"
-        />
+        <input type="password" id="reg-password" placeholder="Minimal 6 Karakter" />
 
         <div class="btn-row">
           <button class="btn-login" onclick="registerUser()">Daftar</button>
@@ -115,6 +110,69 @@
     </footer>
 
     <script>
+      // =========================
+      // CEK STATUS LOGIN
+      // =========================
+      function checkLoginStatus() {
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (user) {
+          // Sembunyikan tombol Masuk & Daftar
+          document.getElementById("nav-masuk").style.display = "none";
+          document.getElementById("nav-daftar").style.display = "none";
+
+          // Tampilkan user wrapper
+          document.getElementById("nav-user").style.display = "block";
+
+          // Isi nama di tombol & dropdown
+          const nama = user.name || "User";
+          document.getElementById("nav-username").textContent = nama;
+          document.getElementById("dropdown-name").textContent = nama;
+          document.getElementById("dropdown-email").textContent = user.email || "";
+
+          // Buat inisial avatar (misal "Budi Agung" → "BA")
+          const inisial = nama
+            .split(" ")
+            .map((w) => w[0])
+            .slice(0, 2)
+            .join("")
+            .toUpperCase();
+          document.getElementById("nav-avatar").textContent = inisial;
+        }
+      }
+
+      // =========================
+      // TOGGLE DROPDOWN
+      // =========================
+      function toggleDropdown() {
+        const wrapper = document.getElementById("nav-user");
+        const btn = document.getElementById("user-btn");
+        const isOpen = wrapper.classList.toggle("open");
+        btn.setAttribute("aria-expanded", isOpen);
+      }
+
+      // Tutup dropdown kalau klik di luar
+      document.addEventListener("click", function (e) {
+        const wrapper = document.getElementById("nav-user");
+        if (wrapper && !wrapper.contains(e.target)) {
+          wrapper.classList.remove("open");
+          const btn = document.getElementById("user-btn");
+          if (btn) btn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // =========================
+      // LOGOUT
+      // =========================
+      function logoutUser() {
+        if (confirm("Yakin ingin keluar?")) {
+          localStorage.removeItem("user");
+          window.location.reload();
+        }
+      }
+
+      // Jalankan saat halaman dimuat
+      checkLoginStatus();
       // =========================
       // REGISTER
       // =========================

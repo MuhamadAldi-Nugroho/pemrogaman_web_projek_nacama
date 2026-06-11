@@ -6,13 +6,11 @@
 }
 
 body {
-  background-color: #0b0b0a; 
+  background-color: #0b0b0a;
   color: #e4e4e0;
   font-family: "Plus Jakarta Sans", sans-serif;
   min-height: 100vh;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -32,7 +30,7 @@ nav {
 
 nav .logo {
   font-family: "Cinzel", serif;
-  color: #cca464; 
+  color: #cca464;
   font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: 3px;
@@ -85,7 +83,7 @@ button {
 }
 
 .btn-primary {
-  background-color: #cca464; 
+  background-color: #cca464;
   color: #0b0b0a;
   padding: 10px 20px;
   border-radius: 8px;
@@ -210,6 +208,144 @@ button {
   font-size: 0.95rem;
   line-height: 1.6;
 }
+/* --- USER DROPDOWN --- */
+/* ===== USER DROPDOWN ===== */
+/* ===== USER DROPDOWN ===== */
+
+.user-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid #333330;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #e4e4e0;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.user-btn:hover {
+  border-color: #cca464;
+  background: rgba(204, 164, 100, 0.08);
+}
+
+.user-wrapper {
+  position: relative;
+}
+
+.avatar-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(204, 164, 100, 0.15);
+  border: 1px solid rgba(204, 164, 100, 0.3);
+  color: #cca464;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chevron-icon {
+  font-size: 12px;
+  transition: transform 0.2s;
+}
+
+.user-wrapper.open .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* DROPDOWN PANEL */
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 230px;
+
+  background: #151515;
+  border: 1px solid rgba(204, 164, 100, 0.25);
+  border-radius: 14px;
+
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+
+  transition: all 0.25s ease;
+  z-index: 999;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.user-wrapper.open .user-dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* HEADER */
+.dropdown-header {
+  padding: 14px 16px;
+  background: rgba(204, 164, 100, 0.05);
+  border-bottom: 1px solid #262626;
+}
+
+.dropdown-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e4e4e0;
+}
+
+.dropdown-email {
+  font-size: 12px;
+  color: #8c8c88;
+  margin-top: 3px;
+}
+
+/* ITEM */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 12px 16px;
+
+  background: transparent;
+  border: none;
+  text-decoration: none;
+
+  color: #d5d5d1;
+  font-size: 14px;
+  text-align: left;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(204, 164, 100, 0.08);
+  color: #cca464;
+}
+
+/* DIVIDER */
+.dropdown-divider {
+  height: 1px;
+  background: #262626;
+}
+
+/* LOGOUT */
+.dropdown-danger {
+  color: #ff8b8b !important;
+}
+
+.dropdown-danger:hover {
+  background: rgba(255, 0, 0, 0.08) !important;
+  color: #ff6b6b !important;
+}
 
 /* --- FOOTER --- */
 footer {
@@ -327,7 +463,7 @@ nav {
 }
 .btn-row {
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   margin-top: 5px;
 }
 
@@ -352,7 +488,7 @@ nav {
   display: block;
   font-size: 12px;
   margin-top: 10px;
- 
+
   color: #6d6049;
   font-weight: 500;
 }
