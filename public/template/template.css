@@ -145,6 +145,102 @@ nav .logo span {
   border: 1px solid transparent;
 }
 
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 20px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #00a8cc;
+  color: #0b0b0a;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.user-name {
+  color: #8c8882;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.logout-btn {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.profile-section {
+  position: relative;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #00a8cc;
+  color: #0b0b0a;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.user-name {
+  color: #8c8882;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #121212;
+  min-width: 140px;
+  border-radius: 8px;
+  border: 1px solid #262626;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  z-index: 101;
+  padding: 8px 0;
+}
+
+.profile-section:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  color: #8c8882;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 13px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #1a1a1a;
+  color: #cca464;
+}
+
 .badge-elegan { border-color: #8a6d3b; color: #8a6d3b; }
 .badge-modern { border-color: #555533; color: #888855; }
 .badge-bersih { border-color: #666655; color: #999977; }

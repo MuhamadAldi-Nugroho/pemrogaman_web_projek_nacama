@@ -16,6 +16,7 @@
     <div class="nav-links">
       <a href="#" class="nav-link active">Template</a>
       <a href="#" class="nav-link">Riwayat</a>
+      <div id="auth-menu" style="display: flex; align-items: center;"></div>
     </div>
   </nav>
 
@@ -44,7 +45,7 @@
         </div>
       </a>
 
-      <a href="editing_template/editing_template.html?template=bold" class="template-card card-highlight"> <!-- hapus card-highlight dari minimal, pindah sesuai kebutuhan -->
+      <a href="editing_template/editing_template.html?template=bold" class="template-card card-highlight">
         <div class="card-preview card-bold">
           <div class="preview-content center-left">
             <div class="p-company-top">NAMA PERUSAHAAN</div>
@@ -132,5 +133,36 @@
     </div>
   </main>
 
+  <script>
+    const authMenu = document.getElementById('auth-menu');
+    const savedUser = localStorage.getItem('user');
+
+    if (savedUser) {
+      const user = JSON.parse(savedUser);
+      const initial = user.name.charAt(0).toUpperCase();
+
+      authMenu.innerHTML = `
+        <div class="profile-section">
+          <div class="profile-trigger">
+            <div class="avatar">${initial}</div>
+            <span class="user-name">${user.name}</span>
+          </div>
+          <div class="dropdown-menu">
+            <a href="#" id="logout-btn">Keluar</a>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('logout-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('user');
+        window.location.href = '../index.html'; 
+      });
+    } else {
+      authMenu.innerHTML = `
+        <a href="../index.html" class="nav-link">Masuk</a>
+      `;
+    }
+  </script>
 </body>
 </html>
