@@ -116,7 +116,7 @@
 
             // kalau login sukses
             if (data.status === "success") {
-              localStorage.setItem("user", JSON.stringify(data.user));
+              sessionStorage.setItem("user", JSON.stringify(data.user));
 
               window.location.href = "index.html";
             }

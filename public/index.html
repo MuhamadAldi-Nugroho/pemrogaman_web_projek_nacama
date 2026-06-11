@@ -114,7 +114,7 @@
       // CEK STATUS LOGIN
       // =========================
       function checkLoginStatus() {
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(sessionStorage.getItem("user"));
 
         if (user) {
           // Sembunyikan tombol Masuk & Daftar
@@ -166,7 +166,7 @@
       // =========================
       function logoutUser() {
         if (confirm("Yakin ingin keluar?")) {
-          localStorage.removeItem("user");
+          sessionStorage.removeItem("user");
           window.location.reload();
         }
       }
