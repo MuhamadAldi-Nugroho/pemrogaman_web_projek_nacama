@@ -18,8 +18,6 @@ document.getElementById("email").value = user.email || "";
 
 document.getElementById("phone").value = user.phone || "";
 
-document.getElementById("address").value = user.address || "";
-
 document.getElementById("jobTitle").value = user.jobTitle || "";
 
 document.getElementById("company").value = user.company || "";
@@ -81,8 +79,6 @@ async function saveProfile() {
         email: document.getElementById("email").value,
 
         phone: document.getElementById("phone").value,
-
-        address: document.getElementById("address").value,
 
         jobTitle: document.getElementById("jobTitle").value,
 

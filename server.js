@@ -39,7 +39,6 @@ app.post("/register", (req, res) => {
     phone: "",
     company: "",
     website: "",
-    address: "",
     avatarColor: "#D4AF37",
   });
 
