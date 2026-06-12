@@ -1,8 +1,13 @@
 [
   {
     "id": 1781185821687,
-    "name": "arsya",
+    "name": "Arsya Fitrotul Firdaus",
     "email": "arsya@gmail.com",
-    "password": "123456"
+    "password": "123456",
+    "phone": "088892927272",
+    "address": "",
+    "jobTitle": "Backend Developer",
+    "company": "Kecap (Kecap Kecup)",
+    "website": "www.kecapkecup.com"
   }
 ]
