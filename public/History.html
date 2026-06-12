@@ -1,46 +1,367 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Riwayat Desain — NACAMA</title>
-  <link rel="stylesheet" href="css/history.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riwayat Desain — NACAMA</title>
+    <link rel="stylesheet" href="css/history.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <span class="brand-name">NACAMA</span>
+        <span class="brand-sub">NAME CARD MAKER</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-links">Template</a>
+        <a href="#" id="nav-masuk" class="nav-links">Masuk</a>
+        <a>
+          <button type="button" id="nav-daftar" class="btn-primary">Daftar Gratis</button>
+        </a>
+        <!-- Tampil saat SUDAH login -->
+        <div class="user-wrapper" id="nav-user" style="display: none">
+          <button class="user-btn" id="user-btn" onclick="toggleDropdown()" aria-haspopup="true" aria-expanded="false">
+            <div class="avatar-circle" id="nav-avatar"></div>
+            <span id="nav-username"></span>
+            <span class="chevron-icon" id="chevron-icon">▾</span>
+          </button>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-brand">
-      <span class="brand-name">NACAMA</span>
-      <span class="brand-sub">NAME CARD MAKER</span>
-    </div>
-    <div class="nav-links">
-      <a href="#" class="nav-links">Template</a>
-      <a href="#" class="nav-links">Masuk</a>
-      <a>
-        <button type="button" class="btn-primary">Daftar Gratis</button>
-      </a>
-    </div>
-  </nav>
+          <div class="user-dropdown" id="user-dropdown" role="menu">
+            <div class="dropdown-header">
+              <div class="dropdown-name" id="dropdown-name"></div>
+              <div class="dropdown-email" id="dropdown-email"></div>
+            </div>
+            <a href="profile.html" class="dropdown-item" role="menuitem"> 👤 Profil Saya </a>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item dropdown-danger" role="menuitem" onclick="logoutUser()">Keluar</button>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-  <!-- PAGE HEADER -->
-  <header class="page-header">
-    <p class="eyebrow">✦ RIWAYAT DESAIN</p>
-    <h1>Kartu Nama yang Pernah<br /><em>Kamu Buat</em></h1>
-    <p class="subtitle">Semua template yang pernah dibuat tersimpan di sini. Edit ulang atau unduh kapan saja.</p>
-  </header>
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <p class="eyebrow">✦ RIWAYAT DESAIN</p>
+      <h1>Kartu Nama yang Pernah<br /><em>Kamu Buat</em></h1>
+      <p class="subtitle">Semua template yang pernah dibuat tersimpan di sini. Edit ulang atau unduh kapan saja.</p>
+    </header>
 
-  <!-- FILTER BAR -->
-  <div class="filter-bar">
-    <div class="filter-tabs">
-      <button class="tab active">Semua</button>
-      <button class="tab">Bisnis</button>
-      <button class="tab">Personal</button>
-      <button class="tab">Kreatif</button>
-    </div>
-    <div class="search-box">
-      <span class="search-icon">⌕</span>
-      <input type="text" placeholder="Cari desain..." />
-    </div>
+    <div id="historyContainer"></div>
+
+    <script>
+      // =========================
+      // CEK STATUS LOGIN
+      // =========================
+      function checkLoginStatus() {
+        const user = JSON.parse(sessionStorage.getItem("user"));
+
+        if (!user) return;
+
+        document.getElementById("nav-masuk").style.display = "none";
+        document.getElementById("nav-daftar").style.display = "none";
+
+        document.getElementById("nav-user").style.display = "block";
+
+        document.getElementById("nav-username").textContent = user.name;
+
+        document.getElementById("dropdown-name").textContent = user.name;
+
+        document.getElementById("dropdown-email").textContent = user.email;
+
+        const initials = user.name
+          .split(" ")
+          .map((word) => word[0])
+          .slice(0, 2)
+          .join("")
+          .toUpperCase();
+
+        document.getElementById("nav-avatar").textContent = initials;
+      }
+
+      // =========================
+      // TOGGLE DROPDOWN
+      // =========================
+      function toggleDropdown() {
+        const wrapper = document.getElementById("nav-user");
+        const btn = document.getElementById("user-btn");
+        const isOpen = wrapper.classList.toggle("open");
+        btn.setAttribute("aria-expanded", isOpen);
+      }
+
+      // Tutup dropdown kalau klik di luar
+      document.addEventListener("click", function (e) {
+        const wrapper = document.getElementById("nav-user");
+        if (wrapper && !wrapper.contains(e.target)) {
+          wrapper.classList.remove("open");
+          const btn = document.getElementById("user-btn");
+          if (btn) btn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // =========================
+      // LOGOUT
+      // =========================
+      function logoutUser() {
+        if (confirm("Yakin ingin keluar?")) {
+          sessionStorage.removeItem("user");
+          window.location.reload();
+        }
+      }
+
+      // Jalankan saat halaman dimuat
+      checkLoginStatus();
+      async function loadHistory() {
+        const user = JSON.parse(sessionStorage.getItem("user"));
+
+        if (!user) return;
+
+        const response = await fetch(`http://localhost:3000/history/${user.id}`);
+
+        const data = await response.json();
+
+        const container = document.getElementById("historyContainer");
+
+        if (data.histories.length === 0) {
+          container.innerHTML = `
+      <p style="text-align:center">
+        Belum ada riwayat desain
+      </p>
+    `;
+          return;
+        }
+
+        container.innerHTML = `
+    <div class="content-container">
+    <div class="template-grid"></div>
   </div>
+  `;
+
+        const grid = container.querySelector(".template-grid");
+
+        data.histories.forEach((item) => {
+          grid.innerHTML += `
+      <a href="template/editing_template/editing_template.html?template=${item.template}" class="template-card">
+
+        ${generatePreview(item)}
+
+        <div class="card-footer">
+          <span class="card-title">
+            ${item.name}
+          </span>
+        </div>
+
+      </a>
+    `;
+        });
+      }
+      function generatePreview(item) {
+        if (item.template === "minimal") {
+          return `
+      <div class="card-preview card-minimal">
+        <div class="preview-content centered">
+
+          <div class="p-name dark-text">
+            ${item.name}
+          </div>
+
+          <div class="p-title dark-text font-serif">
+            ${item.title}
+          </div>
+
+          <div class="p-divider"></div>
+
+          <div class="p-info sub-dark">
+            ${item.company}
+          </div>
+
+          <div class="p-info sub-dark">
+            ${item.phone}
+          </div>
+
+          <div class="p-info sub-dark">
+            ${item.email}
+          </div>
+
+          <div class="p-info sub-dark">
+            ${item.web}
+          </div>
+
+        </div>
+      </div>
+    `;
+        }
+
+        if (item.template === "classic") {
+          return `
+      <div class="card-preview card-classic">
+        <div class="preview-content">
+
+          <div class="p-name">
+            ${item.name}
+          </div>
+
+          <div class="p-title">
+            ${item.title}
+          </div>
+
+          <div class="p-info">
+            ${item.phone}
+          </div>
+
+          <div class="p-info">
+            ${item.email}
+          </div>
+
+          <div class="p-info">
+            ${item.web}
+          </div>
+
+          <div class="p-company side-text">
+            ${item.company}
+          </div>
+
+        </div>
+      </div>
+    `;
+        }
+        if (item.template === "gold") {
+          return `
+      <div class="card-preview card-gold">
+        <div class="preview-content">
+
+          <div class="p-name">
+            ${item.name}
+          </div>
+
+          <div class="p-title">
+            ${item.title}
+          </div>
+
+          <div class="p-info">
+            ${item.phone}
+          </div>
+
+          <div class="p-info">
+            ${item.email}
+          </div>
+
+          <div class="p-info">
+            ${item.web}
+          </div>
+
+          <div class="p-company side-text">
+            ${item.company}
+          </div>
+
+        </div>
+      </div>
+    `;
+        }
+        if (item.template === "neon") {
+          return `
+      <div class="card-preview card-neon">
+        <div class="preview-content">
+
+          <div class="p-name">
+            ${item.name}
+          </div>
+
+          <div class="p-title">
+            ${item.title}
+          </div>
+
+          <div class="p-info">
+            ${item.phone}
+          </div>
+
+          <div class="p-info">
+            ${item.email}
+          </div>
+
+          <div class="p-info">
+            ${item.web}
+          </div>
+
+          <div class="p-company side-text">
+            ${item.company}
+          </div>
+
+        </div>
+      </div>
+    `;
+        }
+        if (item.template === "geometric") {
+          return `
+      <div class="card-preview card-geometric">
+        <div class="preview-content">
+
+          <div class="p-name">
+            ${item.name}
+          </div>
+
+          <div class="p-title">
+            ${item.title}
+          </div>
+
+          <div class="p-info">
+            ${item.phone}
+          </div>
+
+          <div class="p-info">
+            ${item.email}
+          </div>
+
+          <div class="p-info">
+            ${item.web}
+          </div>
+
+          <div class="p-company side-text">
+            ${item.company}
+          </div>
+
+        </div>
+      </div>
+    `;
+        }
+        if (item.template === "bold") {
+          return `
+      <div class="card-preview card-bold">
+        <div class="preview-content center-left">
+
+          <div class="p-company-top">
+            ${item.company}
+          </div>
+
+          <div class="p-name">
+            ${item.name}
+          </div>
+
+          <div class="p-title-sub">
+            ${item.title}
+          </div>
+
+          <div class="p-info-inline">
+            ${item.phone}
+          </div>
+
+        </div>
+      </div>
+    `;
+        }
+
+        return `
+    <div class="card-preview card-minimal">
+      <div class="preview-content centered">
+        <div class="p-name dark-text">
+          ${item.name}
+        </div>
+      </div>
+    </div>
+  `;
+      }
+      loadHistory();
+    </script>
+  </body>
+</html>

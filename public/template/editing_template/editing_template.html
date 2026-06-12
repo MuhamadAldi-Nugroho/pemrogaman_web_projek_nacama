@@ -15,7 +15,7 @@
       <div class="nav-links">
         <a href="../template.html" class="nav-link">Template</a>
         <a href="#" class="nav-link">Riwayat</a>
-        <div id="auth-menu" style="display: flex; align-items: center;"></div>
+        <div id="auth-menu" style="display: flex; align-items: center"></div>
       </div>
     </nav>
 
@@ -86,7 +86,7 @@
         <div class="workspace-actions">
           <a href="../template.html"><button type="button" class="btn-secondary">← Kembali</button></a>
           <button type="button" class="btn-download" id="btn-download">⬇ Unduh PDF</button>
-          <button type="button" class="btn-primary">Simpan Proyek</button>
+          <button type="button" id="btn-save-project" class="btn-primary">Simpan Proyek</button>
         </div>
       </section>
 
@@ -147,8 +147,8 @@
       document.getElementById("panel-badge").className = "panel-badge badge-" + theme;
       document.title = "Nacama - Edit " + info.label;
 
-      const authMenu = document.getElementById('auth-menu');
-      const savedUser = localStorage.getItem('user');
+      const authMenu = document.getElementById("auth-menu");
+      const savedUser = sessionStorage.getItem("user");
       let currentUser = null;
 
       if (savedUser) {
@@ -168,10 +168,10 @@
             </div>
           `;
 
-          document.getElementById('logout-btn').addEventListener('click', (e) => {
+          document.getElementById("logout-btn").addEventListener("click", (e) => {
             e.preventDefault();
-            localStorage.removeItem('user');
-            window.location.href = '../index.html';
+            sessionStorage.removeItem("user");
+            window.location.href = "../index.html";
           });
         }
       }
@@ -244,6 +244,43 @@
           .from(card)
           .save();
       });
+      document.getElementById("btn-save-project").addEventListener("click", saveProject);
+
+      async function saveProject() {
+        const currentUser = JSON.parse(sessionStorage.getItem("user"));
+
+        if (!currentUser) {
+          alert("Silakan login terlebih dahulu");
+          return;
+        }
+
+        const projectData = {
+          id: Date.now(),
+          userId: currentUser.id,
+          template: theme,
+
+          name: document.getElementById("input-name").value,
+          title: document.getElementById("input-title").value,
+          company: document.getElementById("input-company").value,
+          phone: document.getElementById("input-phone").value,
+          email: document.getElementById("input-email").value,
+          web: document.getElementById("input-web").value,
+
+          createdAt: new Date().toISOString(),
+        };
+
+        const response = await fetch("http://localhost:3000/save-project", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(projectData),
+        });
+
+        const data = await response.json();
+
+        alert(data.message);
+      }
     </script>
   </body>
 </html>

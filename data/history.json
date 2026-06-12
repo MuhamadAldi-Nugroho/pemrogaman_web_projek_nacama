@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1781274953940,
+    "userId": 1781185821687,
+    "template": "minimal",
+    "name": "Arsya Fitrotul Firdaus",
+    "title": "Backend Developer",
+    "company": "Kecap (Kecap Kecup)",
+    "phone": "088892927272",
+    "email": "arsya@gmail.com",
+    "web": "www.kecapkecup.com",
+    "createdAt": "2026-06-12T14:35:53.940Z"
+  },
+  {
+    "id": 1781275764815,
+    "userId": 1781185821687,
+    "template": "classic",
+    "name": "Arsya Fitrotul Firdaus",
+    "title": "Backend Developer",
+    "company": "Kecap (Kecap Kecup)",
+    "phone": "088892927272",
+    "email": "arsya@gmail.com",
+    "web": "www.kecapkecup.com",
+    "createdAt": "2026-06-12T14:49:24.815Z"
+  }
+]

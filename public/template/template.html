@@ -1,147 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nacama - Pilih Template</title>
-  <link rel="stylesheet" href="template.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nacama - Pilih Template</title>
+    <link rel="stylesheet" href="template.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        NACAMA
+        <span>NAME CARD MAKER</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-link active">Template</a>
+        <a href="../History.html" class="nav-link">Riwayat</a>
+        <div id="auth-menu" style="display: flex; align-items: center"></div>
+      </div>
+    </nav>
 
-  <nav>
-    <div class="logo">
-      NACAMA
-      <span>NAME CARD MAKER</span>
-    </div>
-    <div class="nav-links">
-      <a href="#" class="nav-link active">Template</a>
-      <a href="#" class="nav-link">Riwayat</a>
-      <div id="auth-menu" style="display: flex; align-items: center;"></div>
-    </div>
-  </nav>
+    <main class="content-container">
+      <section class="hero-title">
+        <h1>Pilih Template</h1>
+        <p>Klik template untuk mulai mengedit kartu namamu</p>
+      </section>
 
-  <main class="content-container">
-    <section class="hero-title">
-      <h1>Pilih Template</h1>
-      <p>Klik template untuk mulai mengedit kartu namamu</p>
-    </section>
-
-    <div class="template-grid">
-      
-      <a href="editing_template/editing_template.html?template=classic" class="template-card">
-        <div class="card-preview card-classic">
-          <div class="preview-content">
-            <div class="p-name">Nama Lengkap</div>
-            <div class="p-title">JABATAN / POSISI</div>
-            <div class="p-info">+62 812-xxxx-xxxx</div>
-            <div class="p-info">nama@email.com</div>
-            <div class="p-info">www.website.com</div>
-            <div class="p-company side-text">NAMA PERUSAHAAN</div>
+      <div class="template-grid">
+        <a href="editing_template/editing_template.html?template=classic" class="template-card">
+          <div class="card-preview card-classic">
+            <div class="preview-content">
+              <div class="p-name">Nama Lengkap</div>
+              <div class="p-title">JABATAN / POSISI</div>
+              <div class="p-info">+62 812-xxxx-xxxx</div>
+              <div class="p-info">nama@email.com</div>
+              <div class="p-info">www.website.com</div>
+              <div class="p-company side-text">NAMA PERUSAHAAN</div>
+            </div>
           </div>
-        </div>
-        <div class="card-footer">
-          <span class="card-title">Classic</span>
-          <span class="badge badge-elegan">Elegan</span>
-        </div>
-      </a>
-
-      <a href="editing_template/editing_template.html?template=bold" class="template-card card-highlight">
-        <div class="card-preview card-bold">
-          <div class="preview-content center-left">
-            <div class="p-company-top">NAMA PERUSAHAAN</div>
-            <div class="p-name">Nama Lengkap</div>
-            <div class="p-title-sub">Jabatan / Posisi</div>
-            <div class="p-info-inline">+62 812-xxxx-xxxx | nama@email.com | www.website.com</div>
+          <div class="card-footer">
+            <span class="card-title">Classic</span>
+            <span class="badge badge-elegan">Elegan</span>
           </div>
-        </div>
-        <div class="card-footer">
-          <span class="card-title">Bold</span>
-          <span class="badge badge-modern">Modern</span>
-        </div>
-      </a>
+        </a>
 
-      <a href="editing_template/editing_template.html?template=minimal" class="template-card">
-        <div class="card-preview card-minimal">
-          <div class="preview-content centered">
-            <div class="p-name dark-text">Nama Lengkap</div>
-            <div class="p-title dark-text font-serif">JABATAN / POSISI</div>
-            <div class="p-divider"></div>
-            <div class="p-info sub-dark">Nama Perusahaan</div>
-            <div class="p-info sub-dark">+62 812-xxxx-xxxx</div>
-            <div class="p-info sub-dark">nama@email.com</div>
-            <div class="p-info sub-dark">www.website.com</div>
+        <a href="editing_template/editing_template.html?template=bold" class="template-card card-highlight">
+          <div class="card-preview card-bold">
+            <div class="preview-content center-left">
+              <div class="p-company-top">NAMA PERUSAHAAN</div>
+              <div class="p-name">Nama Lengkap</div>
+              <div class="p-title-sub">Jabatan / Posisi</div>
+              <div class="p-info-inline">+62 812-xxxx-xxxx | nama@email.com | www.website.com</div>
+            </div>
           </div>
-        </div>
-        <div class="card-footer">
-          <span class="card-title">Minimal</span>
-          <span class="badge badge-bersih">Bersih</span>
-        </div>
-      </a>
-
-      <a href="editing_template/editing_template.html?template=gold" class="template-card">
-        <div class="card-preview card-gold">
-          <div class="preview-content">
-            <div class="p-name gold-text">Nama Lengkap</div>
-            <div class="p-title gold-text-sub">JABATAN / POSISI</div>
-            <div class="p-info gap-top">+62 812-xxxx-xxxx</div>
-            <div class="p-info">nama@email.com</div>
-            <div class="p-info">www.website.com</div>
-            <div class="p-company bottom-right gold-text-sub">NAMA PERUSAHAAN</div>
-            <div class="gold-badge">NL</div>
+          <div class="card-footer">
+            <span class="card-title">Bold</span>
+            <span class="badge badge-modern">Modern</span>
           </div>
-        </div>
-        <div class="card-footer">
-          <span class="card-title">Gold</span>
-          <span class="badge badge-mewah">Mewah</span>
-        </div>
-      </a>
+        </a>
 
-      <a href="editing_template/editing_template.html?template=neon" class="template-card">
-        <div class="card-preview card-neon">
-          <div class="preview-content">
-            <div class="p-company-neon">NAMA PERUSAHAAN</div>
-            <div class="p-name neon-text">Nama Lengkap</div>
-            <div class="p-title neon-sub">JABATAN / POSISI</div>
-            <div class="p-info font-xs">+62 812-xxxx-xxxx</div>
-            <div class="p-info font-xs">nama@email.com</div>
-            <div class="p-info font-xs">www.website.com</div>
+        <a href="editing_template/editing_template.html?template=minimal" class="template-card">
+          <div class="card-preview card-minimal">
+            <div class="preview-content centered">
+              <div class="p-name dark-text">Nama Lengkap</div>
+              <div class="p-title dark-text font-serif">JABATAN / POSISI</div>
+              <div class="p-divider"></div>
+              <div class="p-info sub-dark">Nama Perusahaan</div>
+              <div class="p-info sub-dark">+62 812-xxxx-xxxx</div>
+              <div class="p-info sub-dark">nama@email.com</div>
+              <div class="p-info sub-dark">www.website.com</div>
+            </div>
           </div>
-        </div>
-        <div class="card-footer">
-          <span class="card-title">Neon</span>
-          <span class="badge badge-futuristik">Futuristik</span>
-        </div>
-      </a>
-
-      <a href="editing_template/editing_template.html?template=geometric" class="template-card">
-        <div class="card-preview card-geometric">
-          <div class="preview-content">
-            <div class="p-company-geo">Nama Perusahaan</div>
-            <div class="p-name">Nama Lengkap</div>
-            <div class="p-title">JABATAN / POSISI</div>
-            <div class="p-info font-xs gap-huge">+62 812-xxxx-xxxx</div>
-            <div class="p-info font-xs">nama@email.com</div>
-            <div class="p-info font-xs">www.website.com</div>
+          <div class="card-footer">
+            <span class="card-title">Minimal</span>
+            <span class="badge badge-bersih">Bersih</span>
           </div>
-        </div>
-        <div class="card-footer">
-          <span class="card-title">Geometric</span>
-          <span class="badge badge-kreatif">Kreatif</span>
-        </div>
-      </a>
+        </a>
 
-    </div>
-  </main>
+        <a href="editing_template/editing_template.html?template=gold" class="template-card">
+          <div class="card-preview card-gold">
+            <div class="preview-content">
+              <div class="p-name gold-text">Nama Lengkap</div>
+              <div class="p-title gold-text-sub">JABATAN / POSISI</div>
+              <div class="p-info gap-top">+62 812-xxxx-xxxx</div>
+              <div class="p-info">nama@email.com</div>
+              <div class="p-info">www.website.com</div>
+              <div class="p-company bottom-right gold-text-sub">NAMA PERUSAHAAN</div>
+              <div class="gold-badge">NL</div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="card-title">Gold</span>
+            <span class="badge badge-mewah">Mewah</span>
+          </div>
+        </a>
 
-  <script>
-    const authMenu = document.getElementById('auth-menu');
-    const savedUser = localStorage.getItem('user');
+        <a href="editing_template/editing_template.html?template=neon" class="template-card">
+          <div class="card-preview card-neon">
+            <div class="preview-content">
+              <div class="p-company-neon">NAMA PERUSAHAAN</div>
+              <div class="p-name neon-text">Nama Lengkap</div>
+              <div class="p-title neon-sub">JABATAN / POSISI</div>
+              <div class="p-info font-xs">+62 812-xxxx-xxxx</div>
+              <div class="p-info font-xs">nama@email.com</div>
+              <div class="p-info font-xs">www.website.com</div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="card-title">Neon</span>
+            <span class="badge badge-futuristik">Futuristik</span>
+          </div>
+        </a>
 
-    if (savedUser) {
-      const user = JSON.parse(savedUser);
-      const initial = user.name.charAt(0).toUpperCase();
+        <a href="editing_template/editing_template.html?template=geometric" class="template-card">
+          <div class="card-preview card-geometric">
+            <div class="preview-content">
+              <div class="p-company-geo">Nama Perusahaan</div>
+              <div class="p-name">Nama Lengkap</div>
+              <div class="p-title">JABATAN / POSISI</div>
+              <div class="p-info font-xs gap-huge">+62 812-xxxx-xxxx</div>
+              <div class="p-info font-xs">nama@email.com</div>
+              <div class="p-info font-xs">www.website.com</div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="card-title">Geometric</span>
+            <span class="badge badge-kreatif">Kreatif</span>
+          </div>
+        </a>
+      </div>
+    </main>
 
-      authMenu.innerHTML = `
+    <script>
+      const authMenu = document.getElementById("auth-menu");
+      const savedUser = sessionStorage.getItem("user");
+
+      if (savedUser) {
+        const user = JSON.parse(savedUser);
+        const initial = user.name.charAt(0).toUpperCase();
+
+        authMenu.innerHTML = `
         <div class="profile-section">
           <div class="profile-trigger">
             <div class="avatar">${initial}</div>
@@ -153,16 +150,16 @@
         </div>
       `;
 
-      document.getElementById('logout-btn').addEventListener('click', (e) => {
-        e.preventDefault();
-        localStorage.removeItem('user');
-        window.location.href = '../index.html'; 
-      });
-    } else {
-      authMenu.innerHTML = `
+        document.getElementById("logout-btn").addEventListener("click", (e) => {
+          e.preventDefault();
+          sessionStorage.removeItem("user");
+          window.location.href = "../index.html";
+        });
+      } else {
+        authMenu.innerHTML = `
         <a href="../index.html" class="nav-link">Masuk</a>
       `;
-    }
-  </script>
-</body>
+      }
+    </script>
+  </body>
 </html>

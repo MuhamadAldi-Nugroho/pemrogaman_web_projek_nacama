@@ -2,7 +2,7 @@
 // CEK LOGIN
 // ======================
 
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(sessionStorage.getItem("user"));
 
 if (!user) {
   window.location.href = "Login.html";
@@ -32,12 +32,9 @@ document.getElementById("website").value = user.website || "";
 
 document.getElementById("profileName").textContent = user.name;
 
-document.getElementById("profileJob").textContent =
-  user.jobTitle || "Belum diisi";
+document.getElementById("profileJob").textContent = user.jobTitle || "Belum diisi";
 
-document.getElementById("avatar").textContent = user.name
-  .charAt(0)
-  .toUpperCase();
+document.getElementById("avatar").textContent = user.name.charAt(0).toUpperCase();
 
 // ======================
 // CARD PREVIEW
@@ -50,16 +47,11 @@ updatePreview();
 // ======================
 
 function updatePreview() {
-  document.getElementById("avatar").textContent = document
-    .getElementById("name")
-    .value.charAt(0)
-    .toUpperCase();
+  document.getElementById("avatar").textContent = document.getElementById("name").value.charAt(0).toUpperCase();
 
-  document.getElementById("profileName").textContent =
-    document.getElementById("name").value;
+  document.getElementById("profileName").textContent = document.getElementById("name").value;
 
-  document.getElementById("profileJob").textContent =
-    document.getElementById("jobTitle").value || "Belum diisi";
+  document.getElementById("profileJob").textContent = document.getElementById("jobTitle").value || "Belum diisi";
 }
 
 // realtime preview
@@ -103,7 +95,7 @@ async function saveProfile() {
     const data = await response.json();
 
     if (data.status === "success") {
-      localStorage.setItem("user", JSON.stringify(data.user));
+      sessionStorage.setItem("user", JSON.stringify(data.user));
 
       alert("Profile berhasil diperbarui");
     } else {
@@ -121,7 +113,7 @@ async function saveProfile() {
 
 function logout() {
   if (confirm("Yakin ingin logout?")) {
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
 
     window.location.href = "Login.html";
   }

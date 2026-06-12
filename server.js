@@ -59,9 +59,7 @@ app.post("/login", (req, res) => {
 
   const users = JSON.parse(fs.readFileSync(USERS_FILE, "utf8"));
 
-  const user = users.find(
-    (user) => user.email === email && user.password === password,
-  );
+  const user = users.find((user) => user.email === email && user.password === password);
 
   if (!user) {
     return res.json({
@@ -105,6 +103,58 @@ app.post("/update-profile", (req, res) => {
   });
 });
 
+// ====================
+// GET USER BY ID
+// ====================
+app.get("/user/:id", (req, res) => {
+  const userId = Number(req.params.id);
+
+  const users = JSON.parse(fs.readFileSync(USERS_FILE, "utf8"));
+
+  const user = users.find((u) => u.id === userId);
+
+  if (!user) {
+    return res.status(404).json({
+      status: "error",
+      message: "User tidak ditemukan",
+    });
+  }
+
+  res.json({
+    status: "success",
+    user,
+  });
+});
+const HISTORY_FILE = "./data/history.json";
+
+app.get("/history/:userId", (req, res) => {
+  const userId = Number(req.params.userId);
+
+  const histories = JSON.parse(fs.readFileSync(HISTORY_FILE, "utf8"));
+
+  const userHistory = histories.filter((item) => item.userId === userId);
+
+  res.json({
+    status: "success",
+    histories: userHistory,
+  });
+});
+
+// endpoint history
+app.post("/save-project", (req, res) => {
+  const project = req.body;
+
+  const histories = JSON.parse(fs.readFileSync(HISTORY_FILE, "utf8"));
+
+  histories.push(project);
+
+  fs.writeFileSync(HISTORY_FILE, JSON.stringify(histories, null, 2));
+
+  res.json({
+    status: "success",
+    message: "Proyek berhasil disimpan",
+  });
+});
 app.listen(PORT, () => {
   console.log(`Server berjalan di http://localhost:${PORT}`);
 });
