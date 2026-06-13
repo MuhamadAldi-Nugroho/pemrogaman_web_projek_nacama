@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nacama - Pilih Template</title>
     <link rel="stylesheet" href="template.css" />
+    <link rel="stylesheet" href="/css/alert.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <nav>
@@ -241,12 +243,18 @@
       });
 
       function logoutUser() {
-        sessionStorage.removeItem("user");
+        showConfirm("Logout", "Apakah Anda yakin ingin keluar?", () => {
+          sessionStorage.removeItem("user");
 
-        window.location.href = "../index.html";
+          showSuccess("Berhasil", "Anda berhasil logout");
+
+          setTimeout(() => {
+            window.location.href = "../index.html";
+          }, 1500);
+        });
       }
-
       checkLoginStatus();
     </script>
+    <script src="/js/alert.js"></script>
   </body>
 </html>

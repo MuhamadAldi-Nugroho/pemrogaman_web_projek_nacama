@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nacama - Edit Template</title>
     <link rel="stylesheet" href="editing_template.css" />
+    <link rel="stylesheet" href="../../css/alert.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body data-theme="classic">
     <nav>
@@ -32,7 +35,9 @@
           </div>
 
           <div class="live-card-preview theme-bold">
-            <div class="p-company" id="preview-company-bold">NAMA PERUSAHAAN</div>
+            <div class="p-company" id="preview-company-bold">
+              NAMA PERUSAHAAN
+            </div>
             <div class="p-name" id="preview-name-bold">Nama Lengkap</div>
             <div class="p-title" id="preview-title-bold">Jabatan / Posisi</div>
             <div class="p-info-inline">
@@ -46,10 +51,16 @@
 
           <div class="live-card-preview theme-minimal">
             <div class="p-name" id="preview-name-minimal">Nama Lengkap</div>
-            <div class="p-title" id="preview-title-minimal">JABATAN / POSISI</div>
+            <div class="p-title" id="preview-title-minimal">
+              JABATAN / POSISI
+            </div>
             <div class="p-divider"></div>
-            <div class="p-info" id="preview-company-minimal">Nama Perusahaan</div>
-            <div class="p-info" id="preview-phone-minimal">+62 812-xxxx-xxxx</div>
+            <div class="p-info" id="preview-company-minimal">
+              Nama Perusahaan
+            </div>
+            <div class="p-info" id="preview-phone-minimal">
+              +62 812-xxxx-xxxx
+            </div>
             <div class="p-info" id="preview-email-minimal">nama@email.com</div>
             <div class="p-info" id="preview-web-minimal">www.website.com</div>
           </div>
@@ -60,12 +71,16 @@
             <div class="p-info" id="preview-phone-gold">+62 812-xxxx-xxxx</div>
             <div class="p-info" id="preview-email-gold">nama@email.com</div>
             <div class="p-info" id="preview-web-gold">www.website.com</div>
-            <div class="p-company" id="preview-company-gold">NAMA PERUSAHAAN</div>
+            <div class="p-company" id="preview-company-gold">
+              NAMA PERUSAHAAN
+            </div>
             <div class="gold-badge" id="preview-initials">NL</div>
           </div>
 
           <div class="live-card-preview theme-neon">
-            <div class="p-company" id="preview-company-neon">NAMA PERUSAHAAN</div>
+            <div class="p-company" id="preview-company-neon">
+              NAMA PERUSAHAAN
+            </div>
             <div class="p-name" id="preview-name-neon">Nama Lengkap</div>
             <div class="p-title" id="preview-title-neon">JABATAN / POSISI</div>
             <div class="p-info" id="preview-phone-neon">+62 812-xxxx-xxxx</div>
@@ -74,7 +89,9 @@
           </div>
 
           <div class="live-card-preview theme-geometric">
-            <div class="p-company" id="preview-company-geo">Nama Perusahaan</div>
+            <div class="p-company" id="preview-company-geo">
+              Nama Perusahaan
+            </div>
             <div class="p-name" id="preview-name-geo">Nama Lengkap</div>
             <div class="p-title" id="preview-title-geo">JABATAN / POSISI</div>
             <div class="p-info" id="preview-phone-geo">+62 812-xxxx-xxxx</div>
@@ -84,9 +101,15 @@
         </div>
 
         <div class="workspace-actions">
-          <a href="../template.html"><button type="button" class="btn-secondary">← Kembali</button></a>
-          <button type="button" class="btn-download" id="btn-download">⬇ Unduh PDF</button>
-          <button type="button" id="btn-save-project" class="btn-primary">Simpan Proyek</button>
+          <a href="../template.html"
+            ><button type="button" class="btn-secondary">← Kembali</button></a
+          >
+          <button type="button" class="btn-download" id="btn-download">
+            ⬇ Unduh PDF
+          </button>
+          <button type="button" id="btn-save-project" class="btn-primary">
+            Simpan Proyek
+          </button>
         </div>
       </section>
 
@@ -95,7 +118,9 @@
           <h2 id="panel-theme-name">Classic</h2>
           <span class="panel-badge" id="panel-badge">Elegan</span>
         </div>
-        <p class="panel-subtitle">Ubah teks di bawah untuk memperbarui kartu namamu secara langsung.</p>
+        <p class="panel-subtitle">
+          Ubah teks di bawah untuk memperbarui kartu namamu secara langsung.
+        </p>
 
         <div class="form-container">
           <div class="input-group">
@@ -104,15 +129,27 @@
           </div>
           <div class="input-group">
             <label for="input-title">Jabatan / Posisi</label>
-            <input type="text" id="input-title" placeholder="Jabatan / Posisi" />
+            <input
+              type="text"
+              id="input-title"
+              placeholder="Jabatan / Posisi"
+            />
           </div>
           <div class="input-group">
             <label for="input-company">Nama Perusahaan</label>
-            <input type="text" id="input-company" placeholder="Nama Perusahaan" />
+            <input
+              type="text"
+              id="input-company"
+              placeholder="Nama Perusahaan"
+            />
           </div>
           <div class="input-group">
             <label for="input-phone">Nomor Telepon</label>
-            <input type="text" id="input-phone" placeholder="+62 812-xxxx-xxxx" />
+            <input
+              type="text"
+              id="input-phone"
+              placeholder="+62 812-xxxx-xxxx"
+            />
           </div>
           <div class="input-group">
             <label for="input-email">Email</label>
@@ -144,7 +181,8 @@
       const info = themeInfo[theme] || themeInfo.classic;
       document.getElementById("panel-theme-name").textContent = info.label;
       document.getElementById("panel-badge").textContent = info.badge;
-      document.getElementById("panel-badge").className = "panel-badge badge-" + theme;
+      document.getElementById("panel-badge").className =
+        "panel-badge badge-" + theme;
       document.title = "Nacama - Edit " + info.label;
 
       const authMenu = document.getElementById("auth-menu");
@@ -168,11 +206,20 @@
             </div>
           `;
 
-          document.getElementById("logout-btn").addEventListener("click", (e) => {
-            e.preventDefault();
-            sessionStorage.removeItem("user");
-            window.location.href = "../index.html";
-          });
+          document
+            .getElementById("logout-btn")
+            .addEventListener("click", (e) => {
+              e.preventDefault();
+
+              showConfirm(
+                "Keluar Akun",
+                "Yakin ingin keluar dari akun ini?",
+                () => {
+                  sessionStorage.removeItem("user");
+                  window.location.href = "../index.html";
+                },
+              );
+            });
         }
       }
 
@@ -196,12 +243,28 @@
       };
 
       const defaults = {
-        name: currentUser && currentUser.name ? currentUser.name : "Nama Lengkap",
-        title: currentUser && currentUser.jobTitle ? currentUser.jobTitle : "JABATAN / POSISI",
-        company: currentUser && currentUser.company ? currentUser.company : "NAMA PERUSAHAAN",
-        phone: currentUser && currentUser.phone ? currentUser.phone : "+62 812-xxxx-xxxx",
-        email: currentUser && currentUser.email ? currentUser.email : "nama@email.com",
-        web: currentUser && currentUser.website ? currentUser.website : "www.website.com",
+        name:
+          currentUser && currentUser.name ? currentUser.name : "Nama Lengkap",
+        title:
+          currentUser && currentUser.jobTitle
+            ? currentUser.jobTitle
+            : "JABATAN / POSISI",
+        company:
+          currentUser && currentUser.company
+            ? currentUser.company
+            : "NAMA PERUSAHAAN",
+        phone:
+          currentUser && currentUser.phone
+            ? currentUser.phone
+            : "+62 812-xxxx-xxxx",
+        email:
+          currentUser && currentUser.email
+            ? currentUser.email
+            : "nama@email.com",
+        web:
+          currentUser && currentUser.website
+            ? currentUser.website
+            : "www.website.com",
       };
 
       Object.keys(fieldMap).forEach((field) => {
@@ -232,26 +295,90 @@
       });
 
       document.getElementById("btn-download").addEventListener("click", () => {
-        const card = document.querySelector('.live-card-preview[class*="theme-' + theme + '"]');
+        const card = document.querySelector(
+          '.live-card-preview[class*="theme-' + theme + '"]',
+        );
+
         html2pdf()
           .set({
             margin: 0,
             filename: "kartu-nama-" + theme + ".pdf",
             image: { type: "jpeg", quality: 0.98 },
             html2canvas: { scale: 3, useCORS: true },
-            jsPDF: { unit: "px", format: [340, 200], orientation: "landscape" },
+            jsPDF: {
+              unit: "px",
+              format: [340, 200],
+              orientation: "landscape",
+            },
           })
           .from(card)
-          .save();
+          .save()
+          .then(() => {
+            showSuccess("PDF Berhasil Diunduh", "Kartu nama berhasil disimpan");
+          });
       });
-      document.getElementById("btn-save-project").addEventListener("click", saveProject);
+      document
+        .getElementById("btn-save-project")
+        .addEventListener("click", saveProject);
 
       async function saveProject() {
         const currentUser = JSON.parse(sessionStorage.getItem("user"));
 
         if (!currentUser) {
-          alert("Silakan login terlebih dahulu");
+          showError(
+            "Belum Login",
+            "Silakan login terlebih dahulu untuk menyimpan proyek.",
+          );
           return;
+        }
+
+        async function saveProject() {
+          try {
+            const currentUser = JSON.parse(sessionStorage.getItem("user"));
+
+            if (!currentUser) {
+              showError(
+                "Belum Login",
+                "Silakan login terlebih dahulu untuk menyimpan proyek.",
+              );
+              return;
+            }
+
+            const projectData = {
+              id: Date.now(),
+              userId: currentUser.id,
+              template: theme,
+
+              name: document.getElementById("input-name").value,
+              title: document.getElementById("input-title").value,
+              company: document.getElementById("input-company").value,
+              phone: document.getElementById("input-phone").value,
+              email: document.getElementById("input-email").value,
+              web: document.getElementById("input-web").value,
+
+              createdAt: new Date().toISOString(),
+            };
+
+            const response = await fetch("http://localhost:3000/save-project", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(projectData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              showSuccess("Proyek Disimpan", data.message);
+            } else {
+              showError("Gagal Menyimpan", data.message);
+            }
+          } catch (error) {
+            console.error(error);
+
+            showError("Server Error", "Tidak dapat terhubung ke server.");
+          }
         }
 
         const projectData = {
@@ -279,8 +406,13 @@
 
         const data = await response.json();
 
-        alert(data.message);
+        if (response.ok) {
+          showSuccess("Proyek Disimpan", data.message);
+        } else {
+          showError("Gagal Menyimpan", data.message);
+        }
       }
     </script>
+    <script src="../../js/alert.js"></script>
   </body>
 </html>

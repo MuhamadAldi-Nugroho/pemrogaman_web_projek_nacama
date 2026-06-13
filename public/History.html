@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Riwayat Desain — NACAMA</title>
     <link rel="stylesheet" href="css/history.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/alert.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- NAVBAR -->
@@ -20,11 +26,19 @@
         <a href="template/template.html" class="nav-links">Template</a>
         <a href="#" id="nav-masuk" class="nav-links">Masuk</a>
         <a>
-          <button type="button" id="nav-daftar" class="btn-primary">Daftar Gratis</button>
+          <button type="button" id="nav-daftar" class="btn-primary">
+            Daftar Gratis
+          </button>
         </a>
         <!-- Tampil saat SUDAH login -->
         <div class="user-wrapper" id="nav-user" style="display: none">
-          <button class="user-btn" id="user-btn" onclick="toggleDropdown()" aria-haspopup="true" aria-expanded="false">
+          <button
+            class="user-btn"
+            id="user-btn"
+            onclick="toggleDropdown()"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
             <div class="avatar-circle" id="nav-avatar"></div>
             <span id="nav-username"></span>
             <span class="chevron-icon" id="chevron-icon">▾</span>
@@ -35,9 +49,17 @@
               <div class="dropdown-name" id="dropdown-name"></div>
               <div class="dropdown-email" id="dropdown-email"></div>
             </div>
-            <a href="profile.html" class="dropdown-item" role="menuitem"> 👤 Profil Saya </a>
+            <a href="profile.html" class="dropdown-item" role="menuitem">
+              👤 Profil Saya
+            </a>
             <div class="dropdown-divider"></div>
-            <button class="dropdown-item dropdown-danger" role="menuitem" onclick="logoutUser()">Keluar</button>
+            <button
+              class="dropdown-item dropdown-danger"
+              role="menuitem"
+              onclick="logoutUser()"
+            >
+              Keluar
+            </button>
           </div>
         </div>
       </div>
@@ -47,7 +69,10 @@
     <header class="page-header">
       <p class="eyebrow">✦ RIWAYAT DESAIN</p>
       <h1>Kartu Nama yang Pernah<br /><em>Kamu Buat</em></h1>
-      <p class="subtitle">Semua template yang pernah dibuat tersimpan di sini. Edit ulang atau unduh kapan saja.</p>
+      <p class="subtitle">
+        Semua template yang pernah dibuat tersimpan di sini. Edit ulang atau
+        unduh kapan saja.
+      </p>
     </header>
 
     <div id="historyContainer"></div>
@@ -103,37 +128,34 @@
       });
       //fungsi delete history
       async function deleteHistory(id) {
-        const yakin = confirm("Yakin ingin menghapus riwayat ini?");
+        showConfirm(
+          "Hapus Riwayat",
+          "Yakin ingin menghapus desain ini?",
+          async () => {
+            try {
+              const response = await fetch(
+                `http://localhost:3000/history/${id}`,
+                {
+                  method: "DELETE",
+                },
+              );
 
-        if (!yakin) return;
+              const data = await response.json();
 
-        try {
-          const response = await fetch(`http://localhost:3000/history/${id}`, {
-            method: "DELETE",
-          });
+              if (data.status === "success") {
+                showSuccess("Berhasil", "Riwayat berhasil dihapus");
 
-          const data = await response.json();
+                loadHistory();
+              } else {
+                showError("Gagal", data.message);
+              }
+            } catch (err) {
+              console.error(err);
 
-          if (data.status === "success") {
-            alert("Riwayat berhasil dihapus");
-
-            loadHistory();
-          } else {
-            alert(data.message);
-          }
-        } catch (err) {
-          console.error(err);
-          alert("Terjadi kesalahan");
-        }
-      }
-      // =========================
-      // LOGOUT
-      // =========================
-      function logoutUser() {
-        if (confirm("Yakin ingin keluar?")) {
-          sessionStorage.removeItem("user");
-          window.location.reload();
-        }
+              showError("Error", "Terjadi kesalahan pada server");
+            }
+          },
+        );
       }
 
       // Jalankan saat halaman dimuat
@@ -143,7 +165,9 @@
 
         if (!user) return;
 
-        const response = await fetch(`http://localhost:3000/history/${user.id}`);
+        const response = await fetch(
+          `http://localhost:3000/history/${user.id}`,
+        );
 
         const data = await response.json();
 
@@ -397,6 +421,19 @@
   `;
       }
       loadHistory();
+
+      function logoutUser() {
+        showConfirm("Logout", "Apakah Anda yakin ingin keluar?", () => {
+          sessionStorage.removeItem("user");
+
+          showSuccess("Berhasil", "Anda berhasil logout");
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+        });
+      }
     </script>
+    <script src="/js/alert.js"></script>
   </body>
 </html>

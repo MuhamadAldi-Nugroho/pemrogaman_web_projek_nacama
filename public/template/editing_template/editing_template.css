@@ -321,7 +321,7 @@ body {
   min-width: 140px;
   border-radius: 8px;
   border: 1px solid #262626;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   z-index: 101;
   padding: 8px 0;
 }
@@ -336,7 +336,9 @@ body {
   text-decoration: none;
   display: block;
   font-size: 13px;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .dropdown-menu a:hover {
