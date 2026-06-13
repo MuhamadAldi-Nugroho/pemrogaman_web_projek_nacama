@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/alert.css" />
   </head>
   <body>
     <nav>
@@ -151,6 +152,10 @@
       <p>&copy; 2026 NACAMA. All rights reserved.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="js/alert.js"></script>
+
     <script>
       // =========================
       // CEK STATUS LOGIN
@@ -208,12 +213,12 @@
       // LOGOUT
       // =========================
       function logoutUser() {
-        if (confirm("Yakin ingin keluar?")) {
+        showConfirm("Logout", "Yakin ingin keluar dari akun?", () => {
           sessionStorage.removeItem("user");
-          window.location.reload();
-        }
-      }
 
+          window.location.reload();
+        });
+      }
       // Jalankan saat halaman dimuat
       checkLoginStatus();
       // =========================
@@ -244,10 +249,9 @@
         const password = document.getElementById("reg-password").value.trim();
 
         if (!name || !email || !password) {
-          alert("Semua field wajib diisi!");
+          showError("Form Belum Lengkap", "Semua field wajib diisi!");
           return;
         }
-
         try {
           const response = await fetch("/register", {
             method: "POST",
@@ -263,20 +267,20 @@
 
           const data = await response.json();
 
-          alert(data.message);
-
           if (data.status === "success") {
-            // kosongkan form
+            closeRegister();
+
             document.getElementById("reg-name").value = "";
             document.getElementById("reg-email").value = "";
             document.getElementById("reg-password").value = "";
 
-            // tutup REGIS
-            closeRegister();
+            showSuccess("Registrasi Berhasil", data.message);
+          } else {
+            showError("Registrasi Gagal", data.message);
           }
         } catch (error) {
           console.error(error);
-          alert("Gagal terhubung ke server");
+          showError("Server Error", "Gagal terhubung ke server");
         }
       }
 

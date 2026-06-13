@@ -30,9 +30,12 @@ document.getElementById("website").value = user.website || "";
 
 document.getElementById("profileName").textContent = user.name;
 
-document.getElementById("profileJob").textContent = user.jobTitle || "Belum diisi";
+document.getElementById("profileJob").textContent =
+  user.jobTitle || "Belum diisi";
 
-document.getElementById("avatar").textContent = user.name.charAt(0).toUpperCase();
+document.getElementById("avatar").textContent = user.name
+  .charAt(0)
+  .toUpperCase();
 
 // ======================
 // CARD PREVIEW
@@ -45,11 +48,16 @@ updatePreview();
 // ======================
 
 function updatePreview() {
-  document.getElementById("avatar").textContent = document.getElementById("name").value.charAt(0).toUpperCase();
+  document.getElementById("avatar").textContent = document
+    .getElementById("name")
+    .value.charAt(0)
+    .toUpperCase();
 
-  document.getElementById("profileName").textContent = document.getElementById("name").value;
+  document.getElementById("profileName").textContent =
+    document.getElementById("name").value;
 
-  document.getElementById("profileJob").textContent = document.getElementById("jobTitle").value || "Belum diisi";
+  document.getElementById("profileJob").textContent =
+    document.getElementById("jobTitle").value || "Belum diisi";
 }
 
 // realtime preview
@@ -64,7 +72,7 @@ document.querySelectorAll("input").forEach((input) => {
 
 async function saveProfile() {
   try {
-    const response = await fetch("/update-profile", {
+    const response = await fetch("http://localhost:3000/update-profile", {
       method: "POST",
 
       headers: {
@@ -90,16 +98,19 @@ async function saveProfile() {
 
     const data = await response.json();
 
+    console.log(data);
+
     if (data.status === "success") {
       sessionStorage.setItem("user", JSON.stringify(data.user));
 
-      alert("Profile berhasil diperbarui");
+      showSuccess("Profile Disimpan", "Perubahan berhasil disimpan");
     } else {
-      alert(data.message);
+      showError("Gagal", data.message);
     }
   } catch (err) {
-    console.log(err);
-    alert("Server error");
+    console.error(err);
+
+    showError("Server Error", "Gagal terhubung ke server");
   }
 }
 
@@ -108,9 +119,9 @@ async function saveProfile() {
 // ======================
 
 function logout() {
-  if (confirm("Yakin ingin logout?")) {
+  showConfirm("Logout", "Yakin ingin keluar dari akun?", () => {
     sessionStorage.removeItem("user");
 
     window.location.href = "Login.html";
-  }
+  });
 }
