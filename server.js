@@ -154,6 +154,37 @@ app.post("/save-project", (req, res) => {
     message: "Proyek berhasil disimpan",
   });
 });
+//endpoint delete history
+app.delete("/history/:id", (req, res) => {
+  const historyId = Number(req.params.id);
+
+  const histories = JSON.parse(
+    fs.readFileSync(HISTORY_FILE, "utf8")
+  );
+
+  const index = histories.findIndex(
+    (item) => item.id === historyId
+  );
+
+  if (index === -1) {
+    return res.status(404).json({
+      status: "error",
+      message: "History tidak ditemukan",
+    });
+  }
+
+  histories.splice(index, 1);
+
+  fs.writeFileSync(
+    HISTORY_FILE,
+    JSON.stringify(histories, null, 2)
+  );
+
+  res.json({
+    status: "success",
+    message: "History berhasil dihapus",
+  });
+});
 app.listen(PORT, () => {
   console.log(`Server berjalan di http://localhost:${PORT}`);
 });

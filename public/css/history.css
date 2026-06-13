@@ -48,15 +48,16 @@ body {
 .nav-brand {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
 }
 
 .brand-name {
-  font-family: "Cinzel", serif;
-  font-size: 1.45rem;
+   font-family: "Cinzel", serif;
+  color: #cca464; 
   font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #cca464;
-  padding-right: 40px;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  line-height: 1.1;
 }
 
 .brand-sub {
@@ -350,6 +351,7 @@ body {
 }
 
 .template-card {
+  position: relative;
   width: 305px;
 
   background: #161616;
@@ -613,4 +615,52 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 40px;
+}
+/*css delete button*/
+
+/* Tombol delete */
+.delete-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 36px;
+  height: 36px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(11, 11, 10, 0.85);
+  backdrop-filter: blur(8px);
+
+  color: #d4af37;
+  font-size: 16px;
+
+  cursor: pointer;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.25s ease;
+}
+
+.delete-btn:hover {
+  background: #d4af37;
+  color: #0b0b0a;
+  transform: scale(1.08);
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+@media (max-width: 768px) {
+  .delete-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+    top: 10px;
+    right: 10px;
+  }
 }
