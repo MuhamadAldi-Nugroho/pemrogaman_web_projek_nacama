@@ -424,6 +424,25 @@ nav .logo span {
   color: #555566;
 }
 
+/* ===== TOMBOL DAFTAR GRATIS ===== */
+.btn-primary {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #cca464, #c9a227);
+  color: #0b0b0a;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(204, 164, 100, 0.2);
+}
+
 .card-geometric {
   background-color: #181528;
   background-image: linear-gradient(135deg, transparent 80%, #b1346d 80%);

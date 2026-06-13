@@ -18,7 +18,39 @@
       <div class="nav-links">
         <a href="../template.html" class="nav-link">Template</a>
         <a href="../../History.html" class="nav-link">Riwayat</a>
-        <div id="auth-menu" style="display: flex; align-items: center"></div>
+        <a href="../../Login.html" id="nav-masuk" class="nav-link">Masuk</a>
+
+        <div class="user-wrapper" id="nav-user" style="display: none">
+          <button
+            class="user-btn"
+            id="user-btn"
+            onclick="toggleDropdown()"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <div class="avatar-circle" id="nav-avatar"></div>
+            <span id="nav-username"></span>
+            <span class="chevron-icon">▾</span>
+          </button>
+
+          <div class="user-dropdown" id="user-dropdown">
+            <div class="dropdown-header">
+              <div class="dropdown-name" id="dropdown-name"></div>
+              <div class="dropdown-email" id="dropdown-email"></div>
+            </div>
+
+            <a href="../../profile.html" class="dropdown-item"> 👤 Profil Saya </a>
+
+            <div class="dropdown-divider"></div>
+
+            <button
+              class="dropdown-item dropdown-danger"
+              onclick="logoutUser()"
+            >
+              Keluar
+            </button>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -185,42 +217,54 @@
         "panel-badge badge-" + theme;
       document.title = "Nacama - Edit " + info.label;
 
-      const authMenu = document.getElementById("auth-menu");
       const savedUser = sessionStorage.getItem("user");
       let currentUser = null;
 
       if (savedUser) {
         currentUser = JSON.parse(savedUser);
-        const initial = currentUser.name.charAt(0).toUpperCase();
 
-        if (authMenu) {
-          authMenu.innerHTML = `
-            <div class="profile-section" style="display: flex; align-items: center; gap: 15px; margin-left: 20px;">
-              <div class="profile-trigger" style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding-bottom: 10px;">
-                <div class="avatar" style="width: 32px; height: 32px; background-color: #00a8cc; color: #0b0b0a; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 700; font-size: 14px;">${initial}</div>
-                <span class="user-name" style="color: #8c8882; font-size: 14px; text-transform: capitalize;">${currentUser.name}</span>
-              </div>
-              <div class="dropdown-menu">
-                <a href="#" id="logout-btn">Keluar</a>
-              </div>
-            </div>
-          `;
+        const navMasuk = document.getElementById("nav-masuk");
+        if (navMasuk) navMasuk.style.display = "none";
 
-          document
-            .getElementById("logout-btn")
-            .addEventListener("click", (e) => {
-              e.preventDefault();
+        document.getElementById("nav-user").style.display = "block";
+        document.getElementById("nav-username").textContent = currentUser.name;
+        document.getElementById("dropdown-name").textContent = currentUser.name;
+        document.getElementById("dropdown-email").textContent = currentUser.email;
 
-              showConfirm(
-                "Keluar Akun",
-                "Yakin ingin keluar dari akun ini?",
-                () => {
-                  sessionStorage.removeItem("user");
-                  window.location.href = "../index.html";
-                },
-              );
-            });
+        const initials = currentUser.name
+          .split(" ")
+          .map((word) => word[0])
+          .slice(0, 2)
+          .join("")
+          .toUpperCase();
+
+        document.getElementById("nav-avatar").textContent = initials;
+      }
+
+      function toggleDropdown() {
+        const wrapper = document.getElementById("nav-user");
+        const btn = document.getElementById("user-btn");
+        const isOpen = wrapper.classList.toggle("open");
+        btn.setAttribute("aria-expanded", isOpen);
+      }
+
+      document.addEventListener("click", function (e) {
+        const wrapper = document.getElementById("nav-user");
+        if (wrapper && !wrapper.contains(e.target)) {
+          wrapper.classList.remove("open");
+          const btn = document.getElementById("user-btn");
+          if (btn) btn.setAttribute("aria-expanded", "false");
         }
+      });
+
+      function logoutUser() {
+        showConfirm("Logout", "Apakah Anda yakin ingin keluar?", () => {
+          sessionStorage.removeItem("user");
+          showSuccess("Berhasil", "Anda berhasil logout");
+          setTimeout(() => {
+            window.location.href = "../../index.html";
+          }, 1500);
+        });
       }
 
       const suffix =
