@@ -1,3 +1,13 @@
+window.addEventListener("pageshow", function (event) {
+  if (event.persisted && !sessionStorage.getItem("reloaded")) {
+    sessionStorage.setItem("reloaded", "true");
+    location.reload();
+  }
+});
+
+window.addEventListener("load", () => {
+  sessionStorage.removeItem("reloaded");
+});
 // ======================
 // CEK LOGIN
 // ======================
@@ -30,12 +40,9 @@ document.getElementById("website").value = user.website || "";
 
 document.getElementById("profileName").textContent = user.name;
 
-document.getElementById("profileJob").textContent =
-  user.jobTitle || "Belum diisi";
+document.getElementById("profileJob").textContent = user.jobTitle || "Belum diisi";
 
-document.getElementById("avatar").textContent = user.name
-  .charAt(0)
-  .toUpperCase();
+document.getElementById("avatar").textContent = user.name.charAt(0).toUpperCase();
 
 // ======================
 // CARD PREVIEW
@@ -48,16 +55,11 @@ updatePreview();
 // ======================
 
 function updatePreview() {
-  document.getElementById("avatar").textContent = document
-    .getElementById("name")
-    .value.charAt(0)
-    .toUpperCase();
+  document.getElementById("avatar").textContent = document.getElementById("name").value.charAt(0).toUpperCase();
 
-  document.getElementById("profileName").textContent =
-    document.getElementById("name").value;
+  document.getElementById("profileName").textContent = document.getElementById("name").value;
 
-  document.getElementById("profileJob").textContent =
-    document.getElementById("jobTitle").value || "Belum diisi";
+  document.getElementById("profileJob").textContent = document.getElementById("jobTitle").value || "Belum diisi";
 }
 
 // realtime preview

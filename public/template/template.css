@@ -427,6 +427,7 @@ nav .logo span {
 /* ===== TOMBOL DAFTAR GRATIS ===== */
 .btn-primary {
   font-family: "Plus Jakarta Sans", sans-serif;
+  text-decoration: none;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;

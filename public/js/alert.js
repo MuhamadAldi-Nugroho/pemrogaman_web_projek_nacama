@@ -12,7 +12,7 @@ function showSuccess(title, text) {
 }
 
 function showError(title, text) {
-  Swal.fire({
+  return Swal.fire({
     icon: "error",
     title,
     text,
