@@ -50,7 +50,7 @@ document.addEventListener("click", function (e) {
 async function deleteHistory(id) {
   showConfirm("Hapus Riwayat", "Yakin ingin menghapus desain ini?", async () => {
     try {
-      const response = await fetch(`http://localhost:3000/history/${id}`, {
+      const response = await fetch(`/history/${id}`, {
         method: "DELETE",
       });
 
@@ -78,7 +78,7 @@ async function loadHistory() {
 
   if (!user) return;
 
-  const response = await fetch(`http://localhost:3000/history/${user.id}`);
+  const response = await fetch(`/history/${user.id}`);
 
   const data = await response.json();
 
