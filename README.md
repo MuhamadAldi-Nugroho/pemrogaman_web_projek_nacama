@@ -10,7 +10,6 @@ Web ini memudahkan pengguna umum untuk menghasilkan kartu nama profesional secar
 Website ini dibuat untuk memudahkan dan para user saat ingin membuat sebuah Id card atau name card. Dan dapat menghemat waktu para user apabila mereka ingin membuat Id card.
 
 ## Cara Menjalankan
-
 **Prasyarat:** Pastikan [Node.js](https://nodejs.org) sudah terinstal di komputer kamu.
 ```bash
 # 1. Clone repository ini

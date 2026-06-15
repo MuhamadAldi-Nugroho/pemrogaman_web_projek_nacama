@@ -90,7 +90,7 @@ window.onclick = function (event) {
   }
 };
 
-// =========================
+// ==========================
 // REGISTER USER
 // =========================
 async function registerUser() {
