@@ -225,7 +225,7 @@
           createdAt: new Date().toISOString(),
         };
 
-        const response = await fetch("http://localhost:3000/save-project", {
+        const response = await fetch("/save-project", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
