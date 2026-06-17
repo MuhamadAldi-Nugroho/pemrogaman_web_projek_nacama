@@ -38,15 +38,9 @@ document.getElementById("website").value = user.website || "";
 // HEADER PROFILE
 // ======================
 
-document.getElementById("profileName").textContent = user.name;
 
-document.getElementById("profileJob").textContent = user.jobTitle || "Belum diisi";
 
-document.getElementById("avatar").textContent = user.name.charAt(0).toUpperCase();
 
-// ======================
-// CARD PREVIEW
-// ======================
 
 updatePreview();
 
@@ -74,7 +68,7 @@ document.querySelectorAll("input").forEach((input) => {
 
 async function saveProfile() {
   try {
-    const response = await fetch("http://localhost:3000/update-profile", {
+    const response = await fetch("/update-profile", {
       method: "POST",
 
       headers: {
